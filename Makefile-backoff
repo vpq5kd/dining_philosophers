@@ -1,0 +1,11 @@
+CFLAGS = -g
+CC = clang
+
+all: dining_philosophers
+
+dining_philosophers: dp.o
+	$(CC) $(CFLAGS) dp.o -o dining_philosophers
+dp.o: dp-backoff.c
+	$(CC) $(CFLAGS) -c dp-backoff.c -o dp.o
+clean:
+	rm -f dp.o dining_philosophers
